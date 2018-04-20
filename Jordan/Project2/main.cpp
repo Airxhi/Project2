@@ -6,12 +6,9 @@ void main()
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Lab 1");
 	// Initialise level object
 	Input input;
-	sf::RenderWindow hwnd;
-	sf::RenderWindow* hwndref = &hwnd;
 	Input in;
 	Input* inref = &in;
-	Level level(hwndref, inref);
-	
+	Level level(&window, inref);
 	
 	//time
 	sf::Clock clock;
