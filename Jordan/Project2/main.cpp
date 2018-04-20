@@ -4,7 +4,7 @@
 void main()
 {
 	// Create window
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Kessel Run");
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Kessel Run", sf::Style::Close);
 
 	//Inialise Menu object
 	Input input;

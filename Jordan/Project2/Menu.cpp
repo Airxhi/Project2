@@ -5,8 +5,8 @@ Menu::Menu(sf::RenderWindow* hwnd, Input* inp)
 	: playButton(hwnd), settingsButton(hwnd), scoresButton(hwnd), exitButton(hwnd)
 {
 	window = hwnd;
-
 	initButtons();
+	
 	
 }
 
@@ -16,21 +16,24 @@ Menu::~Menu()
 }
 
 void Menu::initButtons() {
-
-	playButton.setPosition(40, 40);
-	playButton.setSize(sf::Vector2f(100, 100));
+	sf::Vector2u size = window->getSize();
+	int buttonWidth = 300;
+	int width = size.x;
+	int height = size.y;
+	playButton.setPosition(width/2-buttonWidth/2, 40);
+	playButton.setSize(sf::Vector2f(buttonWidth, 60));
 	playButton.setText("Play");
 
-	settingsButton.setPosition(40, 160);
-	settingsButton.setSize(sf::Vector2f(100, 100));
+	settingsButton.setPosition(width/2-buttonWidth/2, 160);
+	settingsButton.setSize(sf::Vector2f(buttonWidth, 60));
 	settingsButton.setText("Settings");
 
-	scoresButton.setPosition(40, 280);
-	scoresButton.setSize(sf::Vector2f(100, 100));
+	scoresButton.setPosition(width/2-buttonWidth/2, 280);
+	scoresButton.setSize(sf::Vector2f(buttonWidth, 60));
 	scoresButton.setText("Scores");
 
-	exitButton.setPosition(40, 400);
-	exitButton.setSize(sf::Vector2f(100, 100));
+	exitButton.setPosition(width/2-buttonWidth/2, 400);
+	exitButton.setSize(sf::Vector2f(buttonWidth, 60));
 	exitButton.setText("Exit");
 }
 
