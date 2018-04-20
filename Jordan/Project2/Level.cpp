@@ -65,7 +65,7 @@ void Level::render()
 	//renders the rectangle in the program
 	window->draw(rect);
 	//renders the circle in the program
-	//window->draw(circle);
+	window->draw(circle);
 	//window->draw(rect1);
 	window->draw(rect2);
 	window->draw(rect3);

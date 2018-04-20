@@ -3,12 +3,11 @@
 void main()
 {
 	// Create window
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Lab 1");
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Kessel Run");
+
 	// Initialise level object
 	Input input;
-	Input in;
-	Input* inref = &in;
-	Level level(&window, inref);
+	Level level(&window, &input);
 	
 	//time
 	sf::Clock clock;
@@ -35,24 +34,6 @@ void main()
 			case sf::Event::KeyReleased:
 				//update input class
 				input.setKeyUp(event.key.code);
-				break;
-			case sf::Event::MouseMoved:
-				//update input class
-				input.setMousePosition(event.mouseMove.x,event.mouseMove.y);
-				break;
-			case sf::Event::MouseButtonPressed:
-				if (event.mouseButton.button == sf::Mouse::Left)
-				{
-					//update input class
-					input.setMouseLeftDown(true);
-				}
-				break;
-			case sf::Event::MouseButtonReleased:
-				if (event.mouseButton.button == sf::Mouse::Left)
-				{
-					//update input class
-					input.setMouseLeftDown(false);
-				}
 				break;
 			default:
 				// don't handle other events
