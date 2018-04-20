@@ -1,6 +1,8 @@
 #include "Level.h"
 #include "Input.h"
 #include "Menu.h"
+#include <chrono>
+#include <thread>
 void main()
 {
 	// Create window
@@ -10,9 +12,6 @@ void main()
 	Input input;
 	Menu menu(&window, &input);
 
-	// Initialise level object
-	Level level(&window, &input);
-	
 	//time
 	sf::Clock clock;
 	float deltaTime;
@@ -29,7 +28,7 @@ void main()
 				window.close();
 				break;
 			case sf::Event::Resized:
-				window.setView(sf::View(sf::FloatRect(0.f, 0.f,	(float)event.size.width, (float)event.size.height)));
+				window.setView(sf::View(sf::FloatRect(0.f, 0.f, (float)event.size.width, (float)event.size.height)));
 				break;
 			case sf::Event::KeyPressed:
 				// update input class
@@ -44,34 +43,10 @@ void main()
 				break;
 			}
 		}
-		//deltaTime = clock.restart().asSeconds();
 
-		//std::cout << "W was pressed\n";
-		// Level
-		if (input.isKeyDown(sf::Keyboard::W))
-		{
-			input.setKeyUp(sf::Keyboard::W);
-			std::cout << "W was pressed\n";
-		}
-		if (input.isKeyDown(sf::Keyboard::J))
-		{
-			if (input.isKeyDown(sf::Keyboard::K))
-			{
-				if (input.isKeyDown(sf::Keyboard::L))
-				{
-					input.setKeyUp(sf::Keyboard::J);
-					input.setKeyUp(sf::Keyboard::K);
-					input.setKeyUp(sf::Keyboard::L);
-					std::cout << "J, k and L were pressed\n";
-				}
-			}
-		}
+		menu.menuLoopInterface();
 
-		menu.render();
+		std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
-		//level.handleInput();
-		//level.update();
-		//level.render();
 	}
-
 }

@@ -8,12 +8,14 @@ public:
 	MenuButton(sf::RenderWindow* hwnd);
 	~MenuButton();
 	void render();
-	void setText(sf::String str);
-	void setSize(sf::Vector2f size);
-	void setPosition(float x, float y);
+	void setRect(sf::IntRect rect);
+	void setTexture(sf::String str);
+	bool isSelected();
+	void setSelected(bool select);
 private:
 	sf::RenderWindow* window;
-	sf::RectangleShape rect;
-	sf::Font arial;
-	sf::Text text;
+	sf::RectangleShape transparentRect;
+	sf::Texture tex;
+	sf::Sprite sprite;
+	bool selected = false;
 };

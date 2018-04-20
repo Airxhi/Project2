@@ -2,6 +2,8 @@
 
 MenuButton::MenuButton(sf::RenderWindow* hwnd)
 {
+	transparentRect.setFillColor(sf::Color(255, 255, 255, 100));
+
 	// Initialize Menu
 	window = hwnd;
 }
@@ -11,22 +13,32 @@ MenuButton::~MenuButton()
 {
 }
 
-void MenuButton::setText(sf::String str) {
-	text.setString(str);
+void MenuButton::setTexture(sf::String str) {
+	if (!tex.loadFromFile(str)) {
+		// error
+	}
+	sprite.setTexture(tex);
 }
 
-void MenuButton::setSize(sf::Vector2f size) {
-	rect.setSize(size);
-	text.setCharacterSize(24);
+void MenuButton::setSelected(bool select) {
+	selected = select;
 }
 
-void MenuButton::setPosition(float x, float y) {
-	rect.setPosition(x, y);
-	text.setPosition(x, y);
+bool MenuButton::isSelected() {
+	return selected;
+}
+
+
+void MenuButton::setRect(sf::IntRect rect) {
+	transparentRect.setSize(sf::Vector2f(rect.width, rect.height));
+	transparentRect.setPosition(rect.left, rect.top);
+	sprite.setPosition(rect.left, rect.top);
 }
 
 void MenuButton::render() {
-	window->draw(rect);
-	window->draw(text);
+	window->draw(sprite);
+	if (selected) {
+		window->draw(transparentRect);
+	}
 }
 
