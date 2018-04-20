@@ -8,13 +8,16 @@ class Menu
 public:
 	Menu(sf::RenderWindow* hwnd, Input* inp);
 	~Menu();
+	void initButtons();
 	void render();
 	void renderBackground();
 private:
 	sf::RenderWindow* window;
-	/*MenuButton playButton;
+	bool selected = false;
+	MenuButton playButton;
 	MenuButton settingsButton;
 	MenuButton scoresButton;
-	MenuButton exitButton;*/
+	MenuButton exitButton;
+
 };
 

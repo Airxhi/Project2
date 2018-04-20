@@ -17,10 +17,12 @@ void MenuButton::setText(sf::String str) {
 
 void MenuButton::setSize(sf::Vector2f size) {
 	rect.setSize(size);
+	text.setCharacterSize(24);
 }
 
 void MenuButton::setPosition(float x, float y) {
 	rect.setPosition(x, y);
+	text.setPosition(x, y);
 }
 
 void MenuButton::render() {

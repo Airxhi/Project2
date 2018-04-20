@@ -1,12 +1,16 @@
 #include "Level.h"
 #include "Input.h"
+#include "Menu.h"
 void main()
 {
 	// Create window
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Kessel Run");
 
-	// Initialise level object
+	//Inialise Menu object
 	Input input;
+	Menu menu(&window, &input);
+
+	// Initialise level object
 	Level level(&window, &input);
 	
 	//time
@@ -62,9 +66,12 @@ void main()
 				}
 			}
 		}
-		level.handleInput();
-		level.update();
-		level.render();
+
+		menu.render();
+
+		//level.handleInput();
+		//level.update();
+		//level.render();
 	}
 
 }
