@@ -67,10 +67,11 @@ void Star::render() {
 	// quite inefficient due to copying of the object, probably should keep original
 	// object and adjust it's size parameters
 	if (speed < 0.8) {
-		sf::RectangleShape rectcopy = rect;
+		sf::Vector2f oldSize = rect.getSize();
 		float size = ((double)rand() / RAND_MAX)*1.5;
-		rectcopy.setSize(sf::Vector2f(size, size));
-		window->draw(rectcopy);
+		rect.setSize(sf::Vector2f(size,size));
+		window->draw(rect);
+		rect.setSize(oldSize);
 	}
 	else {
 		window->draw(rect);
